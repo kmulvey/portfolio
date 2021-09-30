@@ -53,11 +53,12 @@ type PageData struct {
 }
 
 func main() {
-	render()
 	//makeDirs(resolutionToDir)
 	//for _, originalImage := range listFiles(originalImagesDir) {
 	//	convert(originalImage, resolutionToDir, extensionToencoder)
 	//}
+
+	render()
 }
 
 func convert(from string, sizes map[uint]string, encoders map[string]encoder) {

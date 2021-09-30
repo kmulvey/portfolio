@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
 	"image"
 	"image/jpeg"
@@ -122,7 +121,7 @@ func makeDirs(dirs map[uint]string) {
 }
 
 func render() {
-	tmpl, err := template.ParseFiles("index.html")
+	tmpl, err := template.ParseFiles("index.tmpl")
 	HandleErr("parse html template", err)
 
 	var originalPics = listFiles("images/originals")
@@ -133,10 +132,10 @@ func render() {
 		Pictures: originalPics,
 	}
 
-	var buf bytes.Buffer
-	tmpl.Execute(&buf, pageData)
-
-	fmt.Println(buf.String())
+	file, err := os.OpenFile("index.html", os.O_CREATE|os.O_RDWR, 0644)
+	HandleErr("unable to open index.html", err)
+	tmpl.Execute(file, pageData)
+	HandleErr("close index.html", file.Close())
 }
 
 func HandleErr(prefix string, err error) {

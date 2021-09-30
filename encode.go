@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"image"
 	"image/jpeg"
@@ -10,6 +11,7 @@ import (
 	"path"
 	"path/filepath"
 	"strings"
+	"text/template"
 
 	"github.com/Kagami/go-avif"
 	"github.com/chai2010/webp"
@@ -47,11 +49,16 @@ var extensionToencoder = map[string]encoder{
 	".jpg":  jpegEncoder,
 }
 
+type PageData struct {
+	Pictures []string
+}
+
 func main() {
-	makeDirs(resolutionToDir)
-	for _, originalImage := range listFiles(originalImagesDir) {
-		convert(originalImage, resolutionToDir, extensionToencoder)
-	}
+	render()
+	//makeDirs(resolutionToDir)
+	//for _, originalImage := range listFiles(originalImagesDir) {
+	//	convert(originalImage, resolutionToDir, extensionToencoder)
+	//}
 }
 
 func convert(from string, sizes map[uint]string, encoders map[string]encoder) {
@@ -112,6 +119,24 @@ func makeDirs(dirs map[uint]string) {
 			}
 		}
 	}
+}
+
+func render() {
+	tmpl, err := template.ParseFiles("index.html")
+	HandleErr("parse html template", err)
+
+	var originalPics = listFiles("images/originals")
+	for i, pic := range originalPics {
+		originalPics[i] = strings.TrimSuffix(filepath.Base(pic), path.Ext(pic))
+	}
+	var pageData = PageData{
+		Pictures: originalPics,
+	}
+
+	var buf bytes.Buffer
+	tmpl.Execute(&buf, pageData)
+
+	fmt.Println(buf.String())
 }
 
 func HandleErr(prefix string, err error) {

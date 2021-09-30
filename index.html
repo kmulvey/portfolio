@@ -112,26 +112,19 @@
                  </li>
             </ul>
         </header>
-        <picture>
-            <source srcset="images/rmnp.avif" type="image/avif">
-            <source srcset="images/rmnp.webp" type="image/webp">
-            <img src="images/rmnp.jpg" type="image/jpeg" />
-        </picture>
-        <picture style="display: none">
-            <source srcset="images/rmnp.webp" type="image/webp">
-            <img src="images/rmnp.jpg" type="image/jpeg"  loading="lazy" />
-        </picture>
-        <picture style="display: none">
-            <img src="images/rmnp.jpg" type="image/jpeg"  loading="lazy" />
-        </picture>
-        <picture style="display: none">
-            <img src="https://via.placeholder.com/150" type="image/jpeg"  loading="lazy" />
-        </picture>
-        <picture style="display: none">
-            <img src="https://via.placeholder.com/250" type="image/jpeg"  loading="lazy" />
-        </picture>
-        <picture>
-            <img src="https://via.placeholder.com/350" type="image/jpeg"  loading="lazy" />
-        </picture>
+        {{ range .Pictures }}
+            <picture>
+                <source srcset="images/4k/{{ . }}.avif" type="image/avif" media="(min-width: 3840px)">
+                <source srcset="images/4k/{{ . }}.webp" type="image/webp"  media="(min-width: 3840px)">
+                <source srcset="images/4k/{{ . }}.jpg" type="image/webp"  media="(min-width: 3840px)">
+                <source srcset="images/1080/{{ . }}.avif" type="image/avif" media="(min-width: 1080px)">
+                <source srcset="images/1080/{{ . }}.webp" type="image/webp"  media="(min-width: 1080px)">
+                <source srcset="images/1080/{{ . }}.jpg" type="image/webp"  media="(min-width: 1080px)">
+                <source srcset="images/small/{{ . }}.avif" type="image/avif">
+                <source srcset="images/small/{{ . }}.webp" type="image/webp">
+                <source srcset="images/small/{{ . }}.jpg" type="image/webp">
+                <img src="images/1080/{{ . }}.jpg" type="image/jpeg" />
+            </picture>
+        {{ end }}
     </body>
 </html>

@@ -18,7 +18,6 @@ import (
 )
 
 const originalImagesDir = "images/originals"
-const workDir = "images/scratch"
 const fourKImagesDir = "images/4k"
 const tenEightyImagesDir = "images/1080"
 const smallEightyImagesDir = "images/small"
@@ -33,7 +32,7 @@ type binFunc func(int, int) int
 type encoder func(io.Writer, image.Image) error
 
 func avifEncoder(w io.Writer, m image.Image) error {
-	return avif.Encode(w, m, &avif.Options{Quality: 55, Threads: 0})
+	return avif.Encode(w, m, &avif.Options{Quality: 60, Threads: 0})
 }
 func webpEncoder(w io.Writer, m image.Image) error {
 	return webp.Encode(w, m, &webp.Options{Quality: 85})
@@ -103,14 +102,6 @@ func makeDirs() {
 	var _, err = os.Stat(fourKImagesDir)
 	if os.IsNotExist(err) {
 		errDir := os.MkdirAll(fourKImagesDir, 0755)
-		if errDir != nil {
-			log.Fatal(err)
-		}
-	}
-
-	_, err = os.Stat(workDir)
-	if os.IsNotExist(err) {
-		errDir := os.MkdirAll(workDir, 0755)
 		if errDir != nil {
 			log.Fatal(err)
 		}

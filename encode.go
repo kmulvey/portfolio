@@ -48,7 +48,7 @@ var extensionToencoder = map[string]encoder{
 }
 
 func main() {
-	makeDirs()
+	makeDirs(resolutionToDir)
 	for _, originalImage := range listFiles(originalImagesDir) {
 		convert(originalImage, resolutionToDir, extensionToencoder)
 	}
@@ -102,28 +102,14 @@ func listFiles(root string) []string {
 	return allFiles
 }
 
-func makeDirs() {
-	var _, err = os.Stat(fourKImagesDir)
-	if os.IsNotExist(err) {
-		errDir := os.MkdirAll(fourKImagesDir, 0755)
-		if errDir != nil {
-			log.Fatal(err)
-		}
-	}
-
-	_, err = os.Stat(tenEightyImagesDir)
-	if os.IsNotExist(err) {
-		errDir := os.MkdirAll(tenEightyImagesDir, 0755)
-		if errDir != nil {
-			log.Fatal(err)
-		}
-	}
-
-	_, err = os.Stat(smallEightyImagesDir)
-	if os.IsNotExist(err) {
-		errDir := os.MkdirAll(smallEightyImagesDir, 0755)
-		if errDir != nil {
-			log.Fatal(err)
+func makeDirs(dirs map[uint]string) {
+	for _, dir := range dirs {
+		var _, err = os.Stat(dir)
+		if os.IsNotExist(err) {
+			errDir := os.MkdirAll(fourKImagesDir, 0755)
+			if errDir != nil {
+				log.Fatal(err)
+			}
 		}
 	}
 }

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>KM</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="icon" href="favicon.ico">
+        <style>
+            img {
+                width: 100%; 
+                height: auto;
+            }
+            /* top and bottom dash */
+            .hamburger {
+                position: relative;
+                display: inline-block;
+                width: 1.25em;
+                height: 0.8em;
+                margin-right: 0.3em;
+                border-top: 0.2em solid #666;
+                border-bottom: 0.2em solid #666;
+            }
+            /* center dash */
+            .hamburger:before {
+                content: "";
+                position: absolute;
+                top: 0.3em;
+                left: 0px;
+                width: 100%;
+                border-top: 0.2em solid #666;
+            }
+            ul:hover .hamburger {
+                transform: rotate(90deg);
+                transition: transform .5s ease-in-out;
+            }
+            #logo{
+                position: absolute;
+                top: 1%;
+                left: 50%;
+            }
+
+            /*Strip the ul of padding and list styling*/
+            ul {
+                list-style-type:none;
+                margin:0;
+                padding:0;
+                position: absolute;
+            }
+            /*Create a horizontal list with spacing*/
+            li {
+                display:inline-block;
+                float: left;
+                margin-right: 1px;
+            }
+            /*Style for menu links*/
+            li a {
+                display:block;
+                min-width:140px;
+                height: 50px;
+                text-align: center;
+                line-height: 50px;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                color: #fff;
+                text-decoration: none;
+            }
+            /*Style for dropdown links*/
+            li:hover ul a {
+                background: #f3f3f3;
+                background: rgba(204, 204, 204, 0.5);
+                color: #2f3036;
+                height: 40px;
+                line-height: 40px;
+            }
+            /*Hover state for dropdown links*/
+            li:hover ul a:hover {
+                background: rgba(102, 102, 102, 0.75);
+                color: #fff;
+            }
+            /*Hide dropdown links until they are needed*/
+            li ul {
+                display: none;
+            }
+            /*Make dropdown links vertical*/
+            li ul li {
+                display: block;
+                float: none;
+            }
+            /*Prevent text wrapping*/
+            li ul li a {
+                width: auto;
+                min-width: 100px;
+                padding: 0 20px;
+            }
+            /*Display the dropdown on hover*/
+            ul li a:hover + .hidden, .hidden:hover {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <span id="logo">logo</span>
+            <ul class="navbar hidden">
+                <li>
+                    <a href="#"><span class="hamburger"></span></a>
+                     <ul class="hidden">
+                         <li><a href="#">One</a></li>
+                         <li><a href="#">Two</a></li>
+                         <li><a href="#">Three</a></li>
+                     </ul>
+                 </li>
+            </ul>
+        </header>
+        <picture>
+            <source srcset="images/rmnp.avif" type="image/avif">
+            <source srcset="images/rmnp.webp" type="image/webp">
+            <img src="images/rmnp.jpg" type="image/jpeg" />
+        </picture>
+        <picture style="display: none">
+            <source srcset="images/rmnp.webp" type="image/webp">
+            <img src="images/rmnp.jpg" type="image/jpeg"  loading="lazy" />
+        </picture>
+        <picture style="display: none">
+            <img src="images/rmnp.jpg" type="image/jpeg"  loading="lazy" />
+        </picture>
+        <picture style="display: none">
+            <img src="https://via.placeholder.com/150" type="image/jpeg"  loading="lazy" />
+        </picture>
+        <picture style="display: none">
+            <img src="https://via.placeholder.com/250" type="image/jpeg"  loading="lazy" />
+        </picture>
+        <picture>
+            <img src="https://via.placeholder.com/350" type="image/jpeg"  loading="lazy" />
+        </picture>
+    </body>
+</html>

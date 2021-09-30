@@ -32,7 +32,7 @@ type binFunc func(int, int) int
 type encoder func(io.Writer, image.Image) error
 
 func avifEncoder(w io.Writer, m image.Image) error {
-	return avif.Encode(w, m, &avif.Options{Quality: avif.MaxQuality, Threads: 0})
+	return avif.Encode(w, m, nil) // &avif.Options{Quality: avif.MaxQuality, Threads: 0})
 }
 func webpEncoder(w io.Writer, m image.Image) error {
 	return webp.Encode(w, m, &webp.Options{Quality: 85})

@@ -112,12 +112,8 @@
                  </li>
             </ul>
         </header>
-        {{ range $one, $two := .Pictures }}
-            {{ if ne $one 0 }}
-            <picture style="display: none">
-            {{ else }}
-            <picture>
-            {{ end }}
+        {{- range $one, $two := .Pictures }}
+            {{ if ne $one 0 }} <picture style="display: none"> {{ else }} <picture> {{ end }}
                 <source srcset="images/4k/{{ . }}.avif" type="image/avif" media="(min-width: 3840px)">
                 <source srcset="images/4k/{{ . }}.webp" type="image/webp"  media="(min-width: 3840px)">
                 <source srcset="images/4k/{{ . }}.jpg" type="image/webp"  media="(min-width: 3840px)">
@@ -129,6 +125,6 @@
                 <source srcset="images/small/{{ . }}.jpg" type="image/webp">
                 <img src="images/1080/{{ . }}.jpg" alt="{{ . }}" loading="lazy" />
             </picture>
-        {{ end }}
+        {{- end }}
     </body>
 </html>

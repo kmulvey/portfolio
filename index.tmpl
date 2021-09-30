@@ -9,22 +9,30 @@
 		<meta name="robots" content="index, follow">
 		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="css/font.css"/>
         <style>
-            img {
+            header {
+                margin-bottom: 1%;
+            }
+            h1{
+                font-family: 'Black Rose Regular';
+                font-weight: normal;
+                font-size: 100px;
+                color: rgba(0, 0, 0, 0.7);
+                margin: 0;
+                text-align: center;
+            }
+            picture, picture img {
                 width: 100%; 
                 height: auto;
-            }
-            #logo{
-                position: absolute;
-                top: 1%;
-                left: 50%;
             }
         </style>
     </head>
     <body>
         <header>
-            <img src="images/logo.png" alt="logo" id="logo" />
+            <h1>Km</h1>
         </header>
+        <gallery>
         {{- range $one, $two := .Pictures }}
             {{ if ne $one 0 }} <picture style="display: none"> {{ else }} <picture> {{ end }}
                 <source srcset="images/4k/{{ . }}.avif" type="image/avif" media="(min-width: 3840px)">
@@ -39,5 +47,6 @@
                 <img src="images/1080/{{ . }}.jpg" alt="{{ . }}" loading="lazy" />
             </picture>
         {{- end }}
+        </gallery>
     </body>
 </html>

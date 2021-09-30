@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, width=device-width">
-        <title>KM</title>
+        <title>Kevin Mulvey</title>
+		<meta charset="utf-8">
+		<meta name="description" content="Kevin Mulvey's Photography">
+		<meta name="keywords" content="Kevin Mulvey, kmulvey, photography">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="robots" content="index, follow">
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" type="text/css" href="css/font.css"/>
         <style>
-            img {
+            header {
+                margin-bottom: 1%;
+            }
+            h1{
+                font-family: 'Black Rose Regular';
+                font-weight: normal;
+                font-size: 100px;
+                color: rgba(0, 0, 0, 0.7);
+                margin: 0;
+                text-align: center;
+            }
+            picture, picture img {
                 width: 100%; 
                 height: auto;
-            }
-            #logo{
-                position: absolute;
-                top: 1%;
-                left: 50%;
             }
         </style>
     </head>
     <body>
         <header>
-            <span id="logo">logo</span>
+            <h1>Km</h1>
         </header>
+        <gallery>
              <picture> 
                 <source srcset="images/4k/baby_goat.avif" type="image/avif" media="(min-width: 3840px)">
                 <source srcset="images/4k/baby_goat.webp" type="image/webp"  media="(min-width: 3840px)">
@@ -70,5 +81,6 @@
                 <source srcset="images/small/sheep.jpg" type="image/webp">
                 <img src="images/1080/sheep.jpg" alt="sheep" loading="lazy" />
             </picture>
+        </gallery>
     </body>
 </html>

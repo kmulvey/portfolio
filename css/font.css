@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'Black Rose Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Black Rose Regular'), url('black_rose.woff') format('woff');
+}

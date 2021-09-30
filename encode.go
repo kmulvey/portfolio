@@ -37,10 +37,14 @@ func avifEncoder(w io.Writer, m image.Image) error {
 func webpEncoder(w io.Writer, m image.Image) error {
 	return webp.Encode(w, m, &webp.Options{Quality: 85})
 }
+func jpegEncoder(w io.Writer, m image.Image) error {
+	return jpeg.Encode(w, m, &jpeg.Options{Quality: 85})
+}
 
 var extensionToencoder = map[string]encoder{
 	".webp": webpEncoder,
 	".avif": avifEncoder,
+	".jpg":  jpegEncoder,
 }
 
 func main() {

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, width=device-width">
-        <title>KM</title>
+        <title>Kevin Mulvey</title>
+		<meta charset="utf-8">
+		<meta name="description" content="Kevin Mulvey's Photography">
+		<meta name="keywords" content="Kevin Mulvey, kmulvey, photography">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="robots" content="index, follow">
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="icon" href="favicon.ico">
         <style>
             img {
                 width: 100%; 
@@ -20,7 +23,7 @@
     </head>
     <body>
         <header>
-            <span id="logo">logo</span>
+            <img src="images/logo.png" alt="logo" id="logo" />
         </header>
         {{- range $one, $two := .Pictures }}
             {{ if ne $one 0 }} <picture style="display: none"> {{ else }} <picture> {{ end }}
